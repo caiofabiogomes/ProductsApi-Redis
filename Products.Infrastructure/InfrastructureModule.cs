@@ -15,8 +15,8 @@ namespace Products.Infrastructure
         {
             services
                 .AddPersistence(configuration)
-                .AddRepositories()
-                .AddRedis();
+                .AddRedis(configuration)
+                .AddRepositories();
 
             return services;
         }
@@ -37,13 +37,14 @@ namespace Products.Infrastructure
             return services;
         }
 
-        private static IServiceCollection AddRedis(this IServiceCollection services)
+        private static IServiceCollection AddRedis(this IServiceCollection services, IConfiguration configuration)
         {
+            var connectionStringRedis = configuration.GetConnectionString("RedisServer");
             services.AddScoped<ICachingService, CachingService>();
             services.AddStackExchangeRedisCache(options =>
                 {
                     options.InstanceName = "Products";
-                    options.Configuration = "127.0.0.1:6379";
+                    options.Configuration = connectionStringRedis;
                 }
             );
 
