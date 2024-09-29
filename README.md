@@ -21,3 +21,4 @@ Este projeto é um sistema simples de CRUD (Create, Read, Update, Delete) para g
  
 ## Para rodar o projeto , mude a connection string no appSettings.
  
+![image](https://github.com/user-attachments/assets/12ddd365-523b-4319-84d7-bd09c4946f06)
