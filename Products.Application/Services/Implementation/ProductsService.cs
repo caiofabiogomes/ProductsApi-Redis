@@ -64,7 +64,7 @@ namespace Products.Application.Services.Implementation
 
         public async Task AddProductAsync(ProductDto product)
         {
-            var productEntity = _mapper.Map<Product>(product);
+            var productEntity = new Product(product.Name, product.Description, product.Price);
 
             await _productsRepository.AddAsync(productEntity);
         }

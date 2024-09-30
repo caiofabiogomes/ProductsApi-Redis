@@ -6,15 +6,10 @@
         { 
 
             CreatedAt = DateTime.Now;
+            Id = Guid.NewGuid();
         }
 
-        private Guid _id;
-
-        public Guid Id
-        {
-            get => _id;
-            set { _id = value == Guid.Empty ? Guid.NewGuid() : value; }
-        }
+        public Guid Id { get; private set; }
 
         public DateTime CreatedAt { get; private set; }
 
